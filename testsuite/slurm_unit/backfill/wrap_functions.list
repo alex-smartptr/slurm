@@ -1,0 +1,7 @@
+# List of functions to be wrapped.
+# Each line becomes:
+# - a --wrap=FUNCTION options passed to the linker
+# - a #define that renames FUNCTION to __wrap_FUNCTION
+
+launch_job
+prolog_slurmctld

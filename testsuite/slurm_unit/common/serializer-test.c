@@ -61,8 +61,8 @@
 #include "src/common/xstring.h"
 #include "src/interfaces/serializer.h"
 
-#include "./serializer-test.data1.c"
-#include "./serializer-test.data2.c"
+#include "serializer-test.data1.c"
+#include "serializer-test.data2.c"
 
 #define BYTES_IN_MiB (1024 * 1024)
 
@@ -753,8 +753,12 @@ extern int main(void)
 	const char *debug_flags_env = getenv("SLURM_DEBUG_FLAGS");
 	const char slurm_unit_conf_content[] =
 		"ClusterName=slurm_unit\n"
+#ifdef SLURM_PLUGIN_DIR
+		"PluginDir=" XSTRINGIFY(SLURM_PLUGIN_DIR) "\n"
+#else
 		"PluginDir=../../../src/plugins/serializer/json/.libs:"
 		"../../../src/plugins/serializer/yaml/.libs/\n"
+#endif
 		"SlurmctldHost=slurm_unit\n";
 	const size_t csize = sizeof(slurm_unit_conf_content);
 

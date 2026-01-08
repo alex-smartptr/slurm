@@ -373,6 +373,7 @@ X_AC_DEPRECATED
 dnl All slurm Makefiles:
 
 AC_CONFIG_FILES([Makefile
+		 config.mk
 		 auxdir/Makefile
 		 contribs/Makefile
 		 contribs/lua/Makefile

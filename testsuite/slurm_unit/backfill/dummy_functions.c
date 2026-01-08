@@ -26,6 +26,10 @@
 #include "src/slurmctld/locks.h"
 #include "src/slurmctld/slurmctld.h"
 
+#ifdef HAVE_WRAP
+#include <wrap_functions.h>
+#endif
+
 uint32_t slurm_daemon = IS_SLURMCTLD;
 
 bool avail_front_end(job_record_t *job_ptr)

@@ -1141,7 +1141,8 @@ static int _parse_hostlist_function(bitstr_t *node_bitmap, char *node_str)
 	int rc = SLURM_SUCCESS;
 	char *start_ptr, *end_ptr;
 
-	start_ptr = xstrchr(node_str, '{') + 1;
+	start_ptr = xstrchr(node_str, '{');
+	start_ptr = start_ptr? start_ptr + 1: NULL;
 	end_ptr = xstrchr(start_ptr, '}');
 
 	if (!end_ptr) {
