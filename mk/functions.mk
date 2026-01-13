@@ -52,6 +52,11 @@ FileList = $(if $(strip $(2)),$(SubdirList),$(DirList))
 SimpleRecipe = @(echo "$(1)"); $(if $(2),$(2); )$(1)
 
 #
+# Copy SRCFILE to DESTFILE with mode 0644. Make all directories above DESTFILE.
+# Use as $(call InstallFile,SRCFILE,DESTFILE)
+InstallFile = @(echo "INSTALL> $(2)"); $(INSTALL_DATA) -D $(1) $(2)
+
+#
 # Make a new directory (and any missing parents).
 # Use as $(call MkDir,PATH)
 MakeDir = $(MKDIR) -p $(1)

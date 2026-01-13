@@ -31,6 +31,6 @@ srun.CFILES_EXTRA = \
 _installed_wrapper := $(DESTDIR)$(libdir)/slurm/src/srun/srun.wrapper.c
 install: $(_installed_wrapper)
 $(_installed_wrapper): $(Here)/srun.wrapper.c
-	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+	$(call InstallFile,$<,$@)
 uninstall::
 	$(call RemoveFiles,$(_installed_wrapper))

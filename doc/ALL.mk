@@ -67,7 +67,7 @@ _installed_man_files := $(patsubst $(Here)/man/%, $(DESTDIR)$(mandir)/%, \
 )
 install: $(_installed_man_files)
 $(_installed_man_files): $(DESTDIR)$(mandir)/%: $(Here)/man/%
-	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+	$(call InstallFile,$<,$@)
 
 ## Uninstall man files
 
@@ -220,7 +220,7 @@ _static_html += $(call FileList, html/, \
 # prior to installation.
 _html_files := $(patsubst $(Here)/html/%, $(HTMLDIR)/%,$(_static_html))
 $(_html_files): $(HTMLDIR)/%: $(Here)/html/%
-	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+	$(call InstallFile,$<,$@)
 
 
 ##
@@ -246,9 +246,9 @@ MAN2HTML_ARGS := \
 #
 # Use as $(call Man2Html,MANFILE,HTMLFILE)
 Man2Html = \
-  ( cd $(OBJDIR) \
+  ( cd $(BUILDDIR) \
     && $(MAN2HTML) $(MAN2HTML_ARGS) $(ROOTDIR)/$(1) >/dev/null \
-  ) && mv $(OBJDIR)/$(man2html) $(2)
+  ) && mv $(BUILDDIR)/$(man2html) $(2)
 
 
 # manX files to be processed into HTML
@@ -260,7 +260,7 @@ _html_files += $(foreach F,$(_man2html_files),$(HTMLDIR)/$(call man2html,$(F)))
 # A rule to generate each HTML file.
 define HtmlGenRules
 
-$(HTMLDIR)/$(man2html): $(1) | $(HTMLDIR)
+$(HTMLDIR)/$(man2html): $(1) | $(HTMLDIR) $(BUILDDIR)
 	@echo "HTML   > $$@"
 	$(call Man2Html,$(1),$$@)
 
@@ -284,7 +284,7 @@ _install_htmldir := $(DESTDIR)${datadir}/doc/${PACKAGE}-${SLURM_VERSION_STRING}/
 _installed_html_files := $(_html_files:$(HTMLDIR)/%=$(_install_htmldir)/%)
 install: $(_installed_html_files)
 $(_installed_html_files): $(_install_htmldir)/%: $(HTMLDIR)/%
-	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+	$(call InstallFile,$<,$@)
 
 ## Uninstall
 

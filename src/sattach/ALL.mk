@@ -18,6 +18,6 @@ $(call c2obj, $(Here)/attach.c): override DEBUG := 1
 _installed_wrapper := $(DESTDIR)$(libdir)/slurm/src/sattach/sattach.wrapper.c
 install: $(_installed_wrapper)
 $(_installed_wrapper): $(Here)/sattach.wrapper.c
-	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+	$(call InstallFile,$<,$@)
 uninstall::
 	$(call RemoveFiles,$(_installed_wrapper))

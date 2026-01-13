@@ -106,7 +106,7 @@ uninstall::
 #  -------------
 # | Directories |
 #  -------------
-$(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) $(TESTDIR) $(HTMLDIR):
+$(BUILDDIR) $(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) $(TESTDIR) $(HTMLDIR):
 	$(call MakeDir,$@)
 
 
@@ -260,7 +260,7 @@ install: $$($(1).__lib) $$($(1).__links)
 $$($(1).__lib): $(solib2path)
 	$(call SimpleRecipe,$(INSTALL_PROGRAM) -D -T $$< $$@)
 $(if $(LibVersion),$$($(1).__links): $$($(1).__lib)\
-$(NEWLINE)	$(call SimpleRecipe,$(LN_S) $$(<F) $$(@F),cd $$(@D)))
+$(NEWLINE)	$(call SimpleRecipe,$(LN_S) -f $$(<F) $$(@F),cd $$(@D)))
 uninstall::
 	$(call RemoveFiles,$$($(1).__lib) $$($(1).__links))
 

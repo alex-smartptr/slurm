@@ -49,28 +49,28 @@ endif
 # Root directory of whole build.
 ROOTDIR := $(PWD)
 
-__builddir := $(BUILDDIR:%/=%)$(FLAVOUR:%=-%)$(__debug)
+BUILDDIR := $(BUILDDIR:%/=%)$(FLAVOUR:%=-%)$(__debug)
 
 # Root for all (static) object files.
-OBJDIR  := $(__builddir)/OBJ
+OBJDIR  := $(BUILDDIR)/OBJ
 
 # Root for all (PIC) object files.
-POBDIR  := $(__builddir)/POB
+POBDIR  := $(BUILDDIR)/POB
 
 # Binaries
-BINDIR  := $(__builddir)/bin
+BINDIR  := $(BUILDDIR)/bin
 
 # Libraries
-LIBDIR  := $(__builddir)/lib
+LIBDIR  := $(BUILDDIR)/lib
 
 # Plugins
 PLUGINDIR := $(LIBDIR)/slurm
 
 # Test results go here.
-TESTDIR := $(__builddir)/test.dir
+TESTDIR := $(BUILDDIR)/test.dir
 
 # Generated HTML
-HTMLDIR := $(__builddir)/html
+HTMLDIR := $(BUILDDIR)/html
 
 
 ## -- Build variables --
