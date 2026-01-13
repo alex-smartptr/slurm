@@ -3,6 +3,8 @@ AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS = -I auxdir
 SUBDIRS    = auxdir src testsuite doc etc
 
+MAKE := $(MAKE) -f Makefile
+
 pkginclude_HEADERS =		\
 	slurm/pmi.h		\
 	slurm/slurm.h 		\
