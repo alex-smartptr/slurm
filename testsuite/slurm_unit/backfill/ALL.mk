@@ -51,8 +51,8 @@ _slurm_conf := $(_objdir)/slurm.conf
 _topology_conf := $(_objdir)/topology.conf
 backfill-test: $(_slurm_conf) $(_topology_conf)
 $(_slurm_conf): $(Here)/slurm.conf
-	@echo "SED    > $@"
-	$(SED) 's%PluginDir=.*$$%PluginDir=$(PLUGINDIR)%g' $< > $@
+	@echo "AWK    > $@"
+	$(AWK) '/^PluginDir=/{print "PluginDir=$(PLUGINDIR)"; while(getline && /\\$$/){}; next}1' $< > $@
 $(_topology_conf): $(Here)/topology.conf
 	@echo "COPY   > $@"
 	$(INSTALL) $< $@
