@@ -49,6 +49,7 @@ include mk/main.mk
 
 
 # Load configuration of all units to be built.
+include doc/ALL.mk
 include src/ALL.mk
 include testsuite/ALL.mk
 INSTALL_HEADERS := $(wildcard slurm/*.h)

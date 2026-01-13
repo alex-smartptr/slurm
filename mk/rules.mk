@@ -62,7 +62,7 @@ endef
 TARGET_VARS := $(foreach T,$(__targets),$(call TargetVars,$(T)))
 $(eval $(TARGET_VARS))
 
-# Calculate final list of unique OBJFILES, POBFILES, DEPFILES, and OBJDIRS
+# Calculate final list of unique generated files, and OBJDIRS
 OBJFILES := $(sort $(OBJFILES))
 POBFILES := $(sort $(POBFILES))
 BINFILES := $(sort $(BINFILES))
@@ -106,7 +106,7 @@ uninstall::
 #  -------------
 # | Directories |
 #  -------------
-$(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) $(TESTDIR):
+$(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) $(TESTDIR) $(HTMLDIR):
 	$(call MakeDir,$@)
 
 
@@ -296,7 +296,7 @@ uninstall::
 # Clean
 .PHONY: clean
 clean::
-	$(call RemoveAll,$(OBJDIR) $(POBDIR) $(BINDIR) $(LIBDIR) $(TESTDIR))
+	$(call RemoveAll,$(OBJDIR) $(POBDIR) $(BINDIR) $(LIBDIR) $(TESTDIR) $(HTMLDIR))
 	$(call RemoveFiles,$(CLEANFILES))
 
 # For troubleshooting, print variable values. E.g. make print-CFLAGS

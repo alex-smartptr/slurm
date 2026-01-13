@@ -69,6 +69,9 @@ PLUGINDIR := $(LIBDIR)/slurm
 # Test results go here.
 TESTDIR := $(__builddir)/test.dir
 
+# Generated HTML
+HTMLDIR := $(__builddir)/html
+
 
 ## -- Build variables --
 
