@@ -25,3 +25,12 @@ srun.CFILES_EXTRA = \
   $(srun_debugger.CFILES) \
   $(bcast.CFILES) \
   $(slurmfull.CFILES) \
+
+
+## Install & uninstall srun.wrapper.c file
+_installed_wrapper := $(DESTDIR)$(libdir)/slurm/src/srun/srun.wrapper.c
+install: $(_installed_wrapper)
+$(_installed_wrapper): $(Here)/srun.wrapper.c
+	$(call SimpleRecipe,$(INSTALL_DATA) -D $< $@)
+uninstall::
+	$(call RemoveFiles,$(_installed_wrapper))
