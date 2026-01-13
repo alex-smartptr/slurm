@@ -63,4 +63,12 @@ openapi_slurmdbd.CFILES := $(call FileList, plugins/openapi/slurmdbd/, \
 	wckeys.c \
 )
 
+
+# slurmrestd/plugins/openapi/util
+PLUGIN += openapi_util
+openapi_util.CFILES := $(call FileList, plugins/openapi/util/, \
+	api.c \
+	convert_format.c \
+)
+
 endif # WITH_SLURMRESTD

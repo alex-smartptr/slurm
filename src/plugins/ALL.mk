@@ -20,7 +20,9 @@ _subdirs := \
   jobcomp \
   job_submit \
   mcs \
+  metrics \
   mpi \
+  namespace \
   node_features \
   preempt \
   prep \
