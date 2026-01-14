@@ -57,6 +57,21 @@ SimpleRecipe = @(echo "$(1)"); $(if $(2),$(2); )$(1)
 InstallFile = @(echo "INSTALL> $(2)"); $(INSTALL_DATA) -D $(1) $(2)
 
 #
+# Create rules to install/uninstall a single file.
+# Use as $(call InstallFileRule,SRCFILE,DESTFILE)
+InstallFileRule = $(eval $(__InstallFileRule))
+define __InstallFileRule
+
+install: $(DESTDIR)$(2)
+$(DESTDIR)$(2): $(1)
+	$(call InstallFile,$$<,$$@)
+uninstall::
+	$(call RemoveFiles,$(DESTDIR)$(2))
+
+endef
+
+
+#
 # Make a new directory (and any missing parents).
 # Use as $(call MkDir,PATH)
 MakeDir = $(MKDIR) -p $(1)

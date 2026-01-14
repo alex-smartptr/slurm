@@ -106,7 +106,8 @@ uninstall::
 #  -------------
 # | Directories |
 #  -------------
-$(BUILDDIR) $(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) $(TESTDIR) $(HTMLDIR):
+$(BUILDDIR) $(OBJDIRS) $(BINDIR) $(LIBDIR) $(PLUGINDIR) \
+$(TESTDIR) $(HTMLDIR) $(ETCDIR):
 	$(call MakeDir,$@)
 
 

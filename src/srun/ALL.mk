@@ -27,10 +27,8 @@ srun.CFILES_EXTRA = \
   $(slurmfull.CFILES) \
 
 
-## Install & uninstall srun.wrapper.c file
-_installed_wrapper := $(DESTDIR)$(libdir)/slurm/src/srun/srun.wrapper.c
-install: $(_installed_wrapper)
-$(_installed_wrapper): $(Here)/srun.wrapper.c
-	$(call InstallFile,$<,$@)
-uninstall::
-	$(call RemoveFiles,$(_installed_wrapper))
+# Install & uninstall srun.wrapper.c file
+$(call InstallFileRule, \
+  $(Here)/srun.wrapper.c, \
+  $(DESTDIR)$(libdir)/slurm/src/srun/srun.wrapper.c \
+)

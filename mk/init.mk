@@ -8,6 +8,7 @@ _init_mk := 1
 all: default
 
 # Eliminate all default rules.
+MAKEFLAGS += --no-builtin-rules
 .SUFFIXES:
 
 # Don't leave half-finished targets lying around.
@@ -71,6 +72,9 @@ TESTDIR := $(BUILDDIR)/test.dir
 
 # Generated HTML
 HTMLDIR := $(BUILDDIR)/html
+
+# Generated (example) config files
+ETCDIR := $(BUILDDIR)/etc
 
 
 ## -- Build variables --
