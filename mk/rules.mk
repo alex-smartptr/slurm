@@ -297,8 +297,8 @@ uninstall::
 # Clean
 .PHONY: clean
 clean::
-	$(call RemoveAll,$(OBJDIR) $(POBDIR) $(BINDIR) $(LIBDIR) $(TESTDIR) $(HTMLDIR))
-	$(call RemoveFiles,$(CLEANFILES))
+	$(call RemoveAll, $(BUILDDIR))
+	$(call RemoveFiles, $(CLEANFILES))
 
 # For troubleshooting, print variable values. E.g. make print-CFLAGS
 print-%:
