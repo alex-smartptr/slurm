@@ -32,11 +32,11 @@ ifdef HAVE_PMIX
 
   # Pick the highest numbered version available
   pmix_version := $(firstword \
-    $(HAVE_PMIX_V6:1=6)) \
-    $(HAVE_PMIX_V5:1=5)) \
-    $(HAVE_PMIX_V4:1=4)) \
-    $(HAVE_PMIX_V3:1=3)) \
-    $(HAVE_PMIX_V2:1=2)) \
+    $(HAVE_PMIX_V6:1=6) \
+    $(HAVE_PMIX_V5:1=5) \
+    $(HAVE_PMIX_V4:1=4) \
+    $(HAVE_PMIX_V3:1=3) \
+    $(HAVE_PMIX_V2:1=2) \
   )
 
   PLUGIN += mpi_pmix
