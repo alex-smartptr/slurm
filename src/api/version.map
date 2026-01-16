@@ -1,0 +1,11 @@
+{ global:
+   islurm_*;
+   sack_*;
+   slurm_*;
+   slurmdb_*;
+   working_cluster_rec;
+   node_record_count;
+   active_node_record_count;
+   node_record_table_ptr;
+  local: *;
+};

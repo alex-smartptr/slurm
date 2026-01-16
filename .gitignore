@@ -42,7 +42,6 @@ autom4te.cache
 /slurm/slurm_version.h
 /slurm/stamp-h2
 /src/api/pmi_version.map
-/src/api/version.map
 /src/common/global_defaults.c
 /src/db_api/version.map
 /stamp-h1
