@@ -38,7 +38,7 @@ ifeq "$(DEBUG)" "1"
   __debug := -debug
 endif
 
-ifneq (,$(filter s,$(MAKEFLAGS)))
+ifneq (,$(findstring s,$(firstword $(MAKEFLAGS))))
   SILENT := 1
 else
   SILENT := 0
