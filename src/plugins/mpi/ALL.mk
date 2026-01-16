@@ -41,7 +41,7 @@ ifdef HAVE_PMIX
 
   PLUGIN += mpi_pmix
   mpi_pmix.CFILES := $(call FileList, pmix/, \
-	pmixp_client_v$(pmix_version).c \
+	pmixp_client_v2.c \
 	mapping.c \
 	mpi_pmix.c \
 	pmixp_agent.c pmixp_client.c pmixp_nspaces.c pmixp_info.c \
