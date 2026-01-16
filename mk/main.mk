@@ -30,6 +30,8 @@ endif
 
 # .DEBUG or .NDEBUG hooks allow user rules to customise the build
 # for debug/no-debug cases.
+# ! NOTE: Some files are always built as DEBUG=1, so it's important that
+# ! all of these variables remain late-bound (set using =, not :=).
 __debug_switch = $(if $(DEBUG:0=),DEBUG,NDEBUG)
 CPPDEFINES  += $(CPPDEFINES.$(__debug_switch))
 CPPFLAGS    += $(CPPFLAGS.$(__debug_switch))
